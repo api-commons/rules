@@ -1,0 +1,30 @@
+name: OpenAPI Info Version
+slug: openapi-info-version
+description: A rule for governing the info version property of the OpenAPI specification.
+engine: Spectral
+specification: OpenAPI
+specificationUrl: https://spec.openapis.org/oas/latest.html#info-object
+guidance: API Evangelist
+guidanceUrl: https://guidance.apievangelist.com/guidance/openapi/info-version.html
+scope: Error
+type: Default
+
+tags:
+  - Versioning
+
+rule:
+
+  openapi-info-version-error:
+    description: Publishing a version for your OpenAPI technical contract helps you
+      communicate change with consumers using Semantic or date-based versioning
+      published to the info version property. You can find details about the <a
+      href="https://spec.openapis.org/oas/latest.html#info-object">info object
+      for OpenAPI</a>, and explore <a
+      href="https://guidance.apievangelist.com/guidance/openapi/info-version.html"
+      target="_blank">API versioning</a> via API Evangelist guidance.
+    message: Info MUST Have Version
+    given: $.info
+    severity: error
+    then:
+      field: version
+      function: truthy
